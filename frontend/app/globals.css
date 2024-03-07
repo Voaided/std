@@ -1,0 +1,192 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+  --bg-color: rgb(0, 0, 0);
+  --card-color: rgb(0, 0, 0);
+  --mouse-x: 10vw;
+  --mouse-y: 5vh;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+
+body {
+  align-items: center;
+  background-color: var(--bg-color);
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  margin: 0px;
+  overflow: hidden;
+  padding: 0px;
+}
+
+
+
+#cards {
+  height: 26vh;
+  width: 21vw;
+}
+
+#cards:hover > .card::after {
+  opacity: 1;
+}
+
+.card {
+  background-color: rgba(170, 0, 255, 0.1);
+  height: 25vh;
+  width: 20vw;  
+}
+
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.card::before,
+.card::after {
+  border-radius: inherit;
+  content: "";
+  height: 100%;
+  left: 0px;
+  opacity: 0;
+  position: absolute;
+  top: 0px;
+  transition: opacity 1500ms;
+  width: 100%;
+  pointer-events: none; /* Add this line */
+}
+
+.card::before {
+  background: radial-gradient(
+    800px circle at var(--mouse-x) var(--mouse-y), 
+    rgba(98, 0, 255, 0.363),
+    transparent 35%
+  );
+  z-index: 3;
+}
+
+.card::after {  
+  background: radial-gradient(
+    600px circle at var(--mouse-x) var(--mouse-y), 
+    rgb(111, 0, 255),
+    transparent 40%
+  );
+  z-index: 1;
+}
+
+.card > .card-content {
+  background-color: var(--card-color);
+  border-radius: inherit;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  inset: 1px;
+  padding: 10vh;
+  position: absolute;
+  z-index: 2;
+}
+
+.signin-logo {
+  margin-top: -10vh; 
+}
+
+.provider-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 5vh;
+}
+.app {
+  height: calc(100vh - ((100vh + 100vw) / 50));
+  width: calc(100vw - ((100vh + 100vw) / 50));
+}
+
+.chatroom {
+  height: calc(100vh - ((100vh + 100vw) / 50));
+  width: calc(75vw - ((100vh + 100vw) / 100));
+}
+
+.sidemenu {
+  height: calc(100vh - ((100vh + 100vw) / 50));
+}
+
+.channels-container {
+  height: calc(100vh - ((100vh + 100vw) / 50));
+  width: calc(25vw - 5rem - ((100vh + 100vw) / 100));
+}
+
+m-custom {
+  margin: calc((100vh + 100vw) / 50);
+}
+.messages-container {
+  height: calc(85vh - ((100vh + 100vw) / 100));
+  margin: calc((100vh + 100vw) / 200);
+}
+
+.messages-container::-webkit-scrollbar {
+  width: 5px; 
+}
+
+.messages-container::-webkit-scrollbar-track {
+  background: transparent; 
+}
+
+.messages-container::-webkit-scrollbar-thumb {
+  background: #555; 
+  border-radius: 1rem; 
+  transition: width 0.3s ease; 
+}
+
+.messages-container::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+.message-input {
+  margin-right: calc((100vh + 100vw) / 200) ;
+  width: calc(60vw - ((100vh + 100vw) / 50));
+}
+.message-input-container {
+  margin: calc((100vh + 100vw) / 200);
+
+}
+
+.better-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.better-scrollbar::-webkit-scrollbar-track {
+  background: rgba(10, 10, 10, 0);
+}
+
+.better-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(64, 64, 65, 0.7);
+  border-radius: 1rem;
+}
+
+.better-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(85, 85, 85, 0.7);
+}
+
+.message-input::selection {
+  background-color: rgb(8, 60, 166); 
+}
+
+
+.absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
